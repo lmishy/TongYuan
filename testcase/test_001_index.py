@@ -46,7 +46,7 @@ class Test_index():
         driver = self.driver
         driver.implicitly_wait(10)
         #等待首页按钮出现
-        driver.find_element_by_link_text("首 页").click()
+        driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/ul/li[1]/a').click()
         assert "TONGYUAN-专注数字货币的交易平台" in driver.title
         # 点击交易产品
         driver.find_element_by_link_text("交易产品").click()
@@ -55,14 +55,14 @@ class Test_index():
         driver.find_element_by_link_text("交易平台").click()
         assert "TONGYUAN交易平台-专注数字货币的交易平台" in driver.title
         # 点击PC版
-        driver.find_element_by_xpath("/html/body/div[3]/div/div[2]/a[1]").click()
+        driver.find_element_by_xpath("/html/body/div[5]/div/div[2]/a[1]").click()
         sleep(5)
         # 点击IOS版
-        driver.find_element_by_xpath("/html/body/div[3]/div/div[2]/a[2]").click()
+        driver.find_element_by_xpath("/html/body/div[5]/div/div[2]/a[2]").click()
         sleep(5)
         driver.back()
         # 点击android版
-        driver.find_element_by_xpath("/html/body/div[3]/div/div[2]/a[3]").click()
+        driver.find_element_by_xpath("/html/body/div[5]/div/div[2]/a[3]").click()
         sleep(5)
         # 点击帮助中心
         driver.get(url1)
