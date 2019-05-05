@@ -8,8 +8,6 @@ from selenium import webdriver
 from config.proxy import url1
 import pytest
 import allure
-from selenium.webdriver.common.action_chains import ActionChains
-from Cookie.get_cookie import getCookies
 
 
 
@@ -39,14 +37,15 @@ class Test_index():
         self.driver.quit()
 
 
-    @pytest.mark.flaky(rerun = 2)
+    # @pytest.mark.flaky(rerun = 2)
     # @pytest.mark.skip(reason="skip")
     @allure.step('页面检查')
     def test_index_scan(self):
         driver = self.driver
         driver.implicitly_wait(10)
         #等待首页按钮出现
-        driver.find_element_by_xpath('/html/body/div[3]/div/div[2]/ul/li[1]/a').click()
+        sleep(5)
+        driver.find_element_by_xpath("//a[contains(@href, 'index.html')]").click()
         assert "TONGYUAN-专注数字货币的交易平台" in driver.title
         # 点击交易产品
         driver.find_element_by_link_text("交易产品").click()
@@ -55,14 +54,14 @@ class Test_index():
         driver.find_element_by_link_text("交易平台").click()
         assert "TONGYUAN交易平台-专注数字货币的交易平台" in driver.title
         # 点击PC版
-        driver.find_element_by_xpath("/html/body/div[5]/div/div[2]/a[1]").click()
+        driver.find_element_by_xpath("//a[contains(text(),'Windows')]").click()
         sleep(5)
         # 点击IOS版
-        driver.find_element_by_xpath("/html/body/div[5]/div/div[2]/a[2]").click()
+        driver.find_element_by_xpath("//a[contains(text(),'IOS版')]").click()
         sleep(5)
         driver.back()
         # 点击android版
-        driver.find_element_by_xpath("/html/body/div[5]/div/div[2]/a[3]").click()
+        driver.find_element_by_xpath("//a[contains(text(),'Android版')]").click()
         sleep(5)
         # 点击帮助中心
         driver.get(url1)
@@ -74,8 +73,8 @@ class Test_index():
         assert u"TONGYUAN-专注数字货币的交易平台" in driver.title
 
 
-    @pytest.mark.flaky(rerun = 2)
-    # @pytest.mark.skip(reason="skip")
+    # @pytest.mark.flaky(rerun = 2)
+    @pytest.mark.skip(reason="skip")
     @allure.step('帮助中心')
     def test_index_help(self):
         driver = self.driver
@@ -102,7 +101,7 @@ class Test_index():
         assert u"安卓教程" in driver.page_source
 
 
-    @pytest.mark.flaky(rerun = 2)
+    # @pytest.mark.flaky(rerun = 2)
     # @pytest.mark.skip(reason="skip")
     @allure.step('公告资讯')
     def test_index_notice(self):
@@ -113,14 +112,14 @@ class Test_index():
         driver.find_element_by_link_text("公告资讯").click()
         assert "专注数字货币的交易平台" in driver.title
         sleep(5)
-        driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/ul/li[1]/div[1]/p[3]/a').click()
+        driver.find_element_by_xpath('//p[3]/a').click()
         sleep(5)
         msg = driver.find_element_by_class_name('cont-box').text
         assert len(msg)!=0
         sleep(5)
         driver.back()
         sleep(5)
-        driver.find_element_by_xpath('/html/body/div[4]/div[2]/div/ul/li[1]/div[1]/p[3]/a').click()
+        driver.find_element_by_xpath('//p[3]/a').click()
         msg = driver.find_element_by_class_name('cont-box').text
         assert len(msg)!=0
         sleep(5)
