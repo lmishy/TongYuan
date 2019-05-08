@@ -37,7 +37,7 @@ class Test_index():
         self.driver.quit()
 
 
-    # @pytest.mark.flaky(rerun = 2)
+    @pytest.mark.flaky(rerun = 2)
     # @pytest.mark.skip(reason="skip")
     @allure.step('页面检查')
     def test_index_scan(self):
@@ -73,8 +73,8 @@ class Test_index():
         assert u"TONGYUAN-专注数字货币的交易平台" in driver.title
 
 
-    # @pytest.mark.flaky(rerun = 2)
-    @pytest.mark.skip(reason="skip")
+    @pytest.mark.flaky(rerun = 2)
+    # @pytest.mark.skip(reason="skip")
     @allure.step('帮助中心')
     def test_index_help(self):
         driver = self.driver
@@ -82,26 +82,27 @@ class Test_index():
         driver.find_element_by_link_text("帮助中心").click()
         assert u"专注数字货币的交易平台" in driver.title
         sleep(5)
-        driver.find_element_by_xpath("/html/body/div[4]/div[2]/div[1]/ul/li[1]/a").click()
+        driver.find_element_by_xpath("/html/body/div[6]/div[2]/div[1]/ul/li[1]/a").click()
+
         assert u"1.如何注册" in driver.page_source
         sleep(5)
-        driver.find_element_by_xpath("/html/body/div[4]/div[2]/div[1]/ul/li[2]").click()
+        driver.find_element_by_xpath("/html/body/div[6]/div[2]/div[1]/ul/li[2]").click()
         assert u"1.注册失败" in driver.page_source
         sleep(5)
-        driver.find_element_by_xpath("/html/body/div[4]/div[2]/div[1]/ul/li[3]").click()
+        driver.find_element_by_xpath("/html/body/div[6]/div[2]/div[1]/ul/li[3]").click()
         assert u"1.比特币（BTC）" in driver.page_source
         sleep(5)
-        driver.find_element_by_xpath("/html/body/div[4]/div[2]/div[1]/ul/li[4]").click()
+        driver.find_element_by_xpath("/html/body/div[6]/div[2]/div[1]/ul/li[4]").click()
         assert u"1.币种交易" in driver.page_source
         sleep(5)
-        driver.find_element_by_xpath("/html/body/div[4]/div[2]/div[1]/ul/li[5]").click()
+        driver.find_element_by_xpath("/html/body/div[6]/div[2]/div[1]/ul/li[5]").click()
         assert u"1.账户登录" in driver.page_source
         sleep(5)
-        driver.find_element_by_xpath("/html/body/div[4]/div[2]/div[1]/ul/li[6]").click()
+        driver.find_element_by_xpath("/html/body/div[6]/div[2]/div[1]/ul/li[6]").click()
         assert u"安卓教程" in driver.page_source
 
 
-    # @pytest.mark.flaky(rerun = 2)
+    @pytest.mark.flaky(rerun = 2)
     # @pytest.mark.skip(reason="skip")
     @allure.step('公告资讯')
     def test_index_notice(self):
@@ -124,7 +125,7 @@ class Test_index():
         assert len(msg)!=0
         sleep(5)
 
-    # @pytest.mark.flaky(rerun=2)
+    @pytest.mark.flaky(rerun=2)
     # @pytest.mark.skip(reason="skip")
     @allure.step('页面底部')
     def test_index_bottom(self):
